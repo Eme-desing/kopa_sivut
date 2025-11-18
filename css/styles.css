@@ -41,6 +41,13 @@ img {
   height: auto;
 }
 
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto; /* Keskittää koko sisällön vaakasuunnassa */
+}
+
+
 /* ----------------------------------------------------------
    HEADER
 ----------------------------------------------------------- */
