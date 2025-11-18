@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------
-   PERUSASETUKSET JA VÄRIMUUTTUJAT
+   PERUSASETUKSET JA VÄRIT
 ----------------------------------------------------------- */
 
 :root {
@@ -11,40 +11,41 @@
   --text-light: #f7f7f7;
 }
 
+/* Nollaukset */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
-/* Hirvi taustalle kaikille sivuille */
+/* Kokosivun taustakuva (hirvi) */
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   line-height: 1.6;
-  color: var(--text-light); /* OLETUSTEKSTI VAALKEA – taustan päällä */
+  color: var(--text-light); /* Oletusteksti vaalea */
   background:
     linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url('../images/Hirvi.jpg') center/cover no-repeat fixed;
+    url('../images/Hirvi.jpg') center/cover fixed no-repeat;
+
+  display: flex;
+  flex-direction: column;
 }
 
-/* Luokat, joilla voi pakottaa tekstin värin */
-.text-light {
-  color: var(--text-light);
-}
+/* Tekstin väriluokat */
+.text-light { color: var(--text-light); }
+.text-dark  { color: var(--text-dark); }
 
-.text-dark {
-  color: var(--text-dark);
-}
-
+/* Kuvien skaalautuminen */
 img {
   max-width: 100%;
   height: auto;
 }
 
+/* Perussisällön keskittäminen */
 .container {
   width: 90%;
   max-width: 1100px;
-  margin: 0 auto; /* Keskittää koko sisällön vaakasuunnassa */
+  margin: 0 auto;
 }
 
 
@@ -59,9 +60,14 @@ img {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(4px);
+
+  display: flex;
+  justify-content: center;
 }
 
 .header-content {
+  width: 90%;
+  max-width: 1100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -90,22 +96,23 @@ img {
   background: var(--primary);
 }
 
+
 /* ----------------------------------------------------------
-   SISÄLTÖLAATIKOT (section)
+   SECTION-LAATIKOT
 ----------------------------------------------------------- */
 
 .section {
-  margin: 3rem auto;
-  padding: 2.5rem 1.5rem;
   width: 90%;
   max-width: 1100px;
+  margin: 3rem auto;
+  padding: 2.5rem 1.5rem;
 
   background: rgba(255, 255, 255, 0.82);
-  border-radius: 12px;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  color: var(--text-dark);
 
-  color: var(--text-dark); /* KORTIN SISÄLLÄ TEKSTI TUMMA */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
 }
 
 .section h2 {
@@ -114,6 +121,7 @@ img {
   border-left: 6px solid var(--primary);
   padding-left: 0.6rem;
 }
+
 
 /* ----------------------------------------------------------
    GRID / KORTIT
@@ -132,7 +140,7 @@ img {
   border-radius: 12px;
   border-left: 6px solid var(--primary);
   box-shadow: 0 3px 10px rgba(0,0,0,0.25);
-  transition: 0.25s;
+  transition: .25s;
   backdrop-filter: blur(3px);
   color: var(--text-dark);
 }
@@ -141,6 +149,7 @@ img {
   transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.35);
 }
+
 
 /* ----------------------------------------------------------
    LISTAT JA TAULUKOT
@@ -154,22 +163,24 @@ img {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1.2rem;
+
   background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(3px);
   color: var(--text-dark);
+
+  backdrop-filter: blur(3px);
 }
 
 .table th,
 .table td {
   border: 1px solid #ccc;
   padding: 0.6rem 0.8rem;
-  font-size: 0.95rem;
 }
 
 .table thead {
   background: var(--primary);
   color: var(--light);
 }
+
 
 /* ----------------------------------------------------------
    NAPIT
@@ -185,7 +196,7 @@ img {
   text-decoration: none;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: 0.25s;
+  transition: .25s;
 }
 
 .button:hover {
@@ -197,6 +208,7 @@ img {
   border: 2px solid var(--light);
 }
 
+
 /* ----------------------------------------------------------
    LOMAKKEET
 ----------------------------------------------------------- */
@@ -204,12 +216,12 @@ img {
 form {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: .7rem;
 }
 
 input,
 textarea {
-  padding: 0.7rem;
+  padding: .7rem;
   border-radius: 6px;
   border: 1px solid #aaa;
   font: inherit;
@@ -222,6 +234,7 @@ textarea:focus {
   outline: 2px solid var(--primary);
 }
 
+
 /* ----------------------------------------------------------
    FOOTER
 ----------------------------------------------------------- */
@@ -231,21 +244,9 @@ textarea:focus {
   color: var(--light);
   text-align: center;
   padding: 1rem 0;
-  margin-top: 3rem;
   backdrop-filter: blur(4px);
-}
 
-html, body {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-.site-footer {
-  margin-top: auto;
+  margin-top: auto; /* Sticky footer */
 }
 
 
@@ -254,16 +255,17 @@ body {
 ----------------------------------------------------------- */
 
 @media (max-width: 700px) {
+
   .header-content {
     flex-direction: column;
     align-items: flex-start;
   }
 
   .main-nav {
-    margin-top: 0.6rem;
+    margin-top: .6rem;
   }
 
   .main-nav a {
-    margin: 0.25rem 0.4rem 0 0;
+    margin: .25rem 0.35rem 0 0;
   }
 }
